@@ -40,7 +40,7 @@ body {
   display: flex;
   gap: 3rem;
   justify-content: flex-start;
-  min-height: 4.75rem;
+  min-height: 5.225rem;
 }
 
 .site-logo {
@@ -54,7 +54,7 @@ body {
 .site-navigation {
   align-items: center;
   display: flex;
-  gap: 2rem;
+  gap: 2.5rem;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -62,7 +62,7 @@ body {
 
 .site-navigation a {
   color: var(--foreground);
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-weight: 600;
   text-decoration: none;
 }
@@ -152,6 +152,124 @@ h1 {
   margin: 1.75rem 0 0;
 }
 
+.home-page {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.image-carousel {
+  position: relative;
+  width: 100%;
+}
+
+.carousel-viewport {
+  border-bottom: 16px solid #f59e0b;
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  width: 100%;
+}
+
+.carousel-viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-slide {
+  aspect-ratio: 20 / 9;
+  flex: 0 0 100%;
+  position: relative;
+  scroll-snap-align: start;
+}
+
+.carousel-image {
+  object-fit: cover;
+}
+
+.carousel-controls {
+  align-items: center;
+  display: flex;
+  inset: 50% 1rem auto 1rem;
+  justify-content: space-between;
+  pointer-events: none;
+  position: absolute;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+.carousel-arrow,
+.carousel-dot {
+  cursor: pointer;
+}
+
+.carousel-arrow {
+  align-items: center;
+  background: rgba(17, 24, 39, 0.52);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 50%;
+  color: #fff;
+  display: inline-flex;
+  font-size: 1.25rem;
+  height: 2.25rem;
+  justify-content: center;
+  line-height: 1;
+  pointer-events: auto;
+  width: 2.25rem;
+}
+
+.carousel-arrow:hover,
+.carousel-arrow:focus-visible {
+  background: rgba(17, 24, 39, 0.7);
+  border-color: rgba(255, 255, 255, 0.42);
+  color: #fff;
+}
+
+.carousel-dots {
+  align-items: center;
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  border-radius: 999px;
+  bottom: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  left: 50%;
+  padding: 0.45rem 0.75rem;
+  pointer-events: auto;
+  position: absolute;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.carousel-dot {
+  background: rgba(245, 158, 11, 0.56);
+  border: 0;
+  border-radius: 50%;
+  height: 0.6rem;
+  padding: 0;
+  width: 0.6rem;
+}
+
+.carousel-dot.is-active {
+  background: #f59e0b;
+  box-shadow: 0 0 0 0.15rem rgba(245, 158, 11, 0.3);
+  transform: scale(1.25);
+}
+
+.carousel-dot:focus-visible,
+.carousel-arrow:focus-visible {
+  outline: 2px solid rgba(245, 158, 11, 0.8);
+  outline-offset: 0.2rem;
+}
+
+.carousel-empty {
+  color: var(--muted);
+  margin: 0;
+  text-align: center;
+}
+
 @keyframes appear {
   from {
     opacity: 0;
@@ -173,8 +291,8 @@ h1 {
     align-items: flex-start;
     flex-direction: column;
     gap: 1rem;
-    padding-bottom: 1.25rem;
-    padding-top: 1.25rem;
+    padding-bottom: 1.375rem;
+    padding-top: 1.375rem;
   }
 
   .site-navigation {
@@ -184,6 +302,10 @@ h1 {
 
   .hello-page {
     padding: 1.5rem;
+  }
+
+  .home-page {
+    padding: 0;
   }
 
   .hello-label {
