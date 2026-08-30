@@ -1,11 +1,69 @@
+const contactDetails = {
+  phone: "+91-8223018835",
+  location: "Main Rd, Lohardaga, Jharkhand 835302",
+  email: "Dummyemail@gmail.com",
+};
+
+const contactCards = [
+  {
+    type: "phone",
+    title: "Phone Number",
+    value: contactDetails.phone,
+    icon: "☎",
+  },
+  {
+    type: "location",
+    title: "Location",
+    value: contactDetails.location,
+    icon: "◉",
+  },
+  {
+    type: "email",
+    title: "Email",
+    value: contactDetails.email,
+    icon: "✉",
+  },
+];
+
 export default function ContactPage() {
   return (
-    <main className="hello-page">
-      <div className="hello-content">
-        <p className="hello-label">Get in touch</p>
-        <h1>Contact</h1>
-        <p className="hello-subtitle">Our contact page is coming soon.</p>
-      </div>
+    <main className="contact-page">
+      <section className="contact-hero" aria-label="Contact banner">
+        <div className="contact-hero-overlay" />
+        <div className="site-container contact-hero-inner">
+          <h1>CONTACT US</h1>
+          <div className="contact-breadcrumb" aria-label="Breadcrumb">
+            <span>Home</span>
+            <span className="breadcrumb-separator">&nbsp;&gt;&nbsp;</span>
+            <span className="breadcrumb-current">Contact Us</span>
+          </div>
+        </div>
+      </section>
+
+      <section className="site-container contact-cards-section" aria-label="Contact details">
+        <div className="contact-grid">
+          {contactCards.map((card) => (
+            <article key={card.type} className="contact-card">
+              <div className="contact-icon-wrap">
+                <span className="contact-icon" aria-hidden="true">
+                  {card.icon}
+                </span>
+              </div>
+
+              <h2>{card.title}</h2>
+
+              <p className="contact-value">
+                {card.value.split("\n").map((line, index) => (
+                  <span key={`${card.type}-${index}`}>
+                    {line}
+                    {index < card.value.split("\n").length - 1 && <br />}
+                  </span>
+                ))}
+              </p>
+            </article>
+          ))}
+        </div>
+      </section>
     </main>
   );
 }
