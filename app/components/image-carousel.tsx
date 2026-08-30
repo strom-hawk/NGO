@@ -14,6 +14,64 @@ type ImageCarouselProps = {
   images: CarouselImage[];
 };
 
+// Returns the next image index while looping back to the first slide.
+function getNextIndex(currentIndex: number, totalImages: number) {
+  return (currentIndex + 1) % totalImages;
+}
+
+// Returns the previous image index while looping to the last slide.
+function getPreviousIndex(currentIndex: number, totalImages: number) {
+  return (currentIndex - 1 + totalImages) % totalImages;
+}
+
+// Scrolls the carousel viewport to the selected image.
+function scrollToImage(carouselRef: React.RefObject<HTMLDivElement | null>, index: number) {
+  const carousel = carouselRef.current;
+
+  if (!carousel) {
+    return;
+  }
+
+  carousel.scrollTo({
+    behavior: "smooth",
+    left: carousel.clientWidth * index,
+  });
+}
+
+// Renders the previous and next navigation buttons for the carousel.
+function CarouselControls({
+  currentIndex,
+  totalImages,
+  onSelect,
+}: {
+  currentIndex: number;
+  totalImages: number;
+  onSelect: (index: number) => void;
+}) {
+  return (
+    <div className="carousel-controls" aria-hidden="true">
+      <button
+        className="carousel-arrow"
+        type="button"
+        aria-label="Previous image"
+        onClick={() => onSelect(getPreviousIndex(currentIndex, totalImages))}
+      >
+        &#8592;
+      </button>
+
+      <button
+        className="carousel-arrow"
+        type="button"
+        aria-label="Next image"
+        onClick={() => onSelect(getNextIndex(currentIndex, totalImages))}
+      >
+        &#8594;
+      </button>
+    </div>
+  );
+}
+
+// Manages the carousel state, autoplay, and slide selection.
 export function ImageCarousel({ images }: ImageCarouselProps) {
   const carouselRef = useRef<HTMLDivElement>(null);
   const currentIndexRef = useRef(0);
@@ -25,27 +83,23 @@ export function ImageCarousel({ images }: ImageCarouselProps) {
     }
 
     const interval = window.setInterval(() => {
-      const nextIndex = (currentIndexRef.current + 1) % images.length;
+      const nextIndex = getNextIndex(currentIndexRef.current, images.length);
       currentIndexRef.current = nextIndex;
       setCurrentIndex(nextIndex);
-      carouselRef.current?.scrollTo({
-        behavior: "smooth",
-        left: carouselRef.current.clientWidth * nextIndex,
-      });
+      scrollToImage(carouselRef, nextIndex);
     }, AUTO_SCROLL_INTERVAL);
 
     return () => window.clearInterval(interval);
   }, [images.length]);
 
+  // Updates the active slide and scrolls the viewport to that image.
   function selectImage(index: number) {
     currentIndexRef.current = index;
     setCurrentIndex(index);
-    carouselRef.current?.scrollTo({
-      behavior: "smooth",
-      left: carouselRef.current.clientWidth * index,
-    });
+    scrollToImage(carouselRef, index);
   }
 
+  // Syncs the active index with the user’s scroll position.
   function handleScroll() {
     const carousel = carouselRef.current;
 
@@ -59,6 +113,36 @@ export function ImageCarousel({ images }: ImageCarouselProps) {
       currentIndexRef.current = nextIndex;
       setCurrentIndex(nextIndex);
     }
+  }
+
+  // Renders each image slide in the horizontal carousel.
+  function renderSlides() {
+    return images.map((image, index) => (
+      <div className="carousel-slide" key={image.src}>
+        <Image
+          className="carousel-image"
+          src={image.src}
+          alt={image.alt}
+          fill
+          sizes="(max-width: 768px) 100vw, 76rem"
+          priority={index === 0}
+        />
+      </div>
+    ));
+  }
+
+  // Renders the dot indicators used to jump to a specific image.
+  function renderDots() {
+    return images.map((image, index) => (
+      <button
+        className={`carousel-dot${index === currentIndex ? " is-active" : ""}`}
+        key={image.src}
+        type="button"
+        aria-label={`Show image ${index + 1}`}
+        aria-current={index === currentIndex ? "true" : undefined}
+        onClick={() => selectImage(index)}
+      />
+    ));
   }
 
   if (images.length === 0) {
@@ -76,51 +160,17 @@ export function ImageCarousel({ images }: ImageCarouselProps) {
         aria-roledescription="carousel"
         aria-label={`Image ${currentIndex + 1} of ${images.length}`}
       >
-        {images.map((image, index) => (
-          <div className="carousel-slide" key={image.src}>
-            <Image
-              className="carousel-image"
-              src={image.src}
-              alt={image.alt}
-              fill
-              sizes="(max-width: 768px) 100vw, 76rem"
-              priority={index === 0}
-            />
-          </div>
-        ))}
+        {renderSlides()}
       </div>
 
-      <div className="carousel-controls" aria-hidden="true">
-        <button
-          className="carousel-arrow"
-          type="button"
-          aria-label="Previous image"
-          onClick={() => selectImage((currentIndex - 1 + images.length) % images.length)}
-        >
-          &#8592;
-        </button>
-
-        <button
-          className="carousel-arrow"
-          type="button"
-          aria-label="Next image"
-          onClick={() => selectImage((currentIndex + 1) % images.length)}
-        >
-          &#8594;
-        </button>
-      </div>
+      <CarouselControls
+        currentIndex={currentIndex}
+        totalImages={images.length}
+        onSelect={selectImage}
+      />
 
       <div className="carousel-dots" aria-label="Choose an image">
-        {images.map((image, index) => (
-          <button
-            className={`carousel-dot${index === currentIndex ? " is-active" : ""}`}
-            key={image.src}
-            type="button"
-            aria-label={`Show image ${index + 1}`}
-            aria-current={index === currentIndex ? "true" : undefined}
-            onClick={() => selectImage(index)}
-          />
-        ))}
+        {renderDots()}
       </div>
     </section>
   );
