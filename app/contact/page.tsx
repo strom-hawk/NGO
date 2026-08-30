@@ -1,8 +1,4 @@
-const contactDetails = {
-  phone: "+91-8223018835",
-  location: "Main Rd, Lohardaga, Jharkhand 835302",
-  email: "Dummyemail@gmail.com",
-};
+import { contactDetails } from "@/app/lib/contact-data";
 
 const contactCards = [
   {
