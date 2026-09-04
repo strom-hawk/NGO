@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const navigation = [
@@ -11,8 +12,14 @@ export function SiteHeader() {
   return (
     <header className="site-header">
       <div className="site-container site-header-inner">
-        <Link className="site-logo" href="/" aria-label="NGO home">
-          NGO
+        <Link className="site-logo" href="/" aria-label="Rajvika Welfare Foundation home">
+          <Image
+            src="/ic_logo.png"
+            alt="Rajvika Welfare Foundation logo"
+            width={440}
+            height={170}
+            priority
+          />
         </Link>
         <nav aria-label="Primary navigation">
           <ul className="site-navigation">

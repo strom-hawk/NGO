@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { contactDetails } from "@/app/lib/contact-data";
 
@@ -19,8 +20,13 @@ export function SiteFooter() {
     <footer className="site-footer">
       <div className="site-container site-footer-inner">
         <div className="site-footer-brand">
-          <div className="site-footer-logo" aria-label="NGO home">
-            <span>NGO</span>
+          <div className="site-footer-branding" aria-label="Rajvika Welfare Foundation home">
+            <Image
+              src="/ic_logo_footer_background.png"
+              alt="Rajvika Welfare Foundation logo"
+              width={420}
+              height={180}
+            />
           </div>
 
           <p className="site-footer-description">
