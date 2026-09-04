@@ -1,4 +1,5 @@
 import { ImageCarousel } from "./components/image-carousel";
+import { HelpCta } from "./components/help-cta/help-cta";
 
 const images = [
   {
@@ -40,15 +41,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="cta-section" aria-label="Additional help">
-        <div className="site-container">
-          <h2>Can't find what you're looking for?</h2>
-          <div className="cta-placeholder">
-            <p>Additional content coming soon...</p>
-          </div>
-        </div>
-      </section>
+      <HelpCta />
     </main>
   );
 }

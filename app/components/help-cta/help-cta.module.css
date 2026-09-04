@@ -1,0 +1,221 @@
+.helpCta {
+  background: #17332d;
+  color: #fff;
+  overflow: hidden;
+  position: relative;
+}
+
+.helpCta::before,
+.helpCta::after {
+  border: 1px solid rgba(217, 249, 157, 0.2);
+  border-radius: 50%;
+  content: "";
+  pointer-events: none;
+  position: absolute;
+}
+
+.helpCta::before {
+  height: 22rem;
+  right: -6rem;
+  top: -12rem;
+  width: 22rem;
+}
+
+.helpCta::after {
+  bottom: -15rem;
+  height: 28rem;
+  left: -12rem;
+  width: 28rem;
+}
+
+.helpCtaInner {
+  align-items: center;
+  display: grid;
+  gap: 2.5rem;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  min-height: 18rem;
+  padding-bottom: 3rem;
+  padding-top: 3rem;
+  position: relative;
+  z-index: 1;
+}
+
+.helpCtaMark {
+  align-items: center;
+  background: #f59e0b;
+  border-radius: 1.5rem 1.5rem 1.5rem 0.25rem;
+  color: #17332d;
+  display: flex;
+  height: 6.75rem;
+  justify-content: center;
+  transform: rotate(-7deg);
+  transition: transform 220ms ease;
+  width: 6.75rem;
+}
+
+.helpCta:hover .helpCtaMark {
+  transform: rotate(0deg) translateY(-0.35rem);
+}
+
+.helpCtaMark span {
+  font-size: 4.37rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.helpCtaCopy {
+  animation: helpCtaReveal 700ms ease-out both;
+  max-width: 38rem;
+}
+
+.helpCtaEyebrow {
+  color: #d9f99d;
+  font-size: 0.684rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  margin: 0 0 0.65rem;
+  text-transform: uppercase;
+}
+
+.helpCtaHeading {
+  color: #fff;
+  font-size: clamp(1.71rem, 3.325vw, 3.04rem);
+  font-weight: 800;
+  letter-spacing: 0;
+  line-height: 1.1;
+  margin: 0;
+  max-width: 35rem;
+}
+
+.helpCtaDescription {
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 1rem 0 0;
+  max-width: 31rem;
+}
+
+.helpCtaActions {
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-width: 10.5rem;
+}
+
+.helpCtaPrimary,
+.helpCtaSecondary {
+  align-items: center;
+  display: inline-flex;
+  font-size: 0.817rem;
+  font-weight: 800;
+  justify-content: center;
+  min-height: 2.9rem;
+  padding: 0.75rem 1.1rem;
+  text-decoration: none;
+  transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.helpCtaPrimary {
+  background: #f59e0b;
+  border: 1px solid #f59e0b;
+  color: #17332d;
+}
+
+.helpCtaSecondary {
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  color: #fff;
+}
+
+.helpCtaPrimary:hover,
+.helpCtaPrimary:focus-visible,
+.helpCtaSecondary:hover,
+.helpCtaSecondary:focus-visible {
+  transform: translateX(0.25rem);
+}
+
+.helpCtaPrimary:hover,
+.helpCtaPrimary:focus-visible {
+  background: #fbbf24;
+  border-color: #fbbf24;
+}
+
+.helpCtaSecondary:hover,
+.helpCtaSecondary:focus-visible {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #fff;
+}
+
+.helpCtaPrimary:focus-visible,
+.helpCtaSecondary:focus-visible {
+  outline: 2px solid #d9f99d;
+  outline-offset: 0.25rem;
+}
+
+@keyframes helpCtaReveal {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .helpCtaCopy {
+    animation: none;
+  }
+
+  .helpCtaMark,
+  .helpCtaPrimary,
+  .helpCtaSecondary {
+    transition: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .helpCtaInner {
+    gap: 1.75rem;
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .helpCtaActions {
+    align-items: flex-start;
+    flex-direction: row;
+    grid-column: 2;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .helpCtaInner {
+    align-items: start;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-bottom: 2.5rem;
+    padding-top: 2.5rem;
+  }
+
+  .helpCtaMark {
+    height: 5rem;
+    width: 5rem;
+  }
+
+  .helpCtaMark span {
+    font-size: 3.325rem;
+  }
+
+  .helpCtaActions {
+    align-items: stretch;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .helpCtaPrimary,
+  .helpCtaSecondary {
+    width: 100%;
+  }
+}

@@ -125,7 +125,7 @@ body {
 
 .site-footer-description {
   color: rgba(255, 255, 255, 0.8);
-  font-size: 0.72rem;
+  font-size: 0.756rem;
   line-height: 1.8;
   margin: 0;
   max-width: 32rem;
@@ -144,7 +144,7 @@ body {
   border-radius: 999px;
   color: #fff;
   display: inline-flex;
-  font-size: 0.90rem;
+  font-size: 0.945rem;
   font-weight: 700;
   height: 2.75rem;
   justify-content: center;
@@ -166,7 +166,7 @@ body {
 
 .site-footer-column h3 {
   color: #f59e0b;
-  font-size: 0.85rem;
+  font-size: 0.8925rem;
   font-weight: 800;
   letter-spacing: 0.06em;
   margin: 0 0 1.5rem;
@@ -183,7 +183,7 @@ body {
 
 .site-footer-column a {
   color: rgba(255, 255, 255, 0.9);
-  font-size: 0.72rem;
+  font-size: 0.756rem;
   text-decoration: none;
   transition: color 180ms ease;
 }
@@ -197,7 +197,7 @@ body {
   align-items: flex-start;
   color: rgba(255, 255, 255, 0.9);
   display: flex;
-  font-size: 0.72rem;
+  font-size: 0.756rem;
   gap: 0.8rem;
   line-height: 1.6;
 }
@@ -206,7 +206,7 @@ body {
   color: #f59e0b;
   display: inline-flex;
   flex-shrink: 0;
-  font-size: 0.90rem;
+  font-size: 0.945rem;
   margin-top: 0.2rem;
 }
 
@@ -235,7 +235,7 @@ body {
   }
 
   .site-footer-logo {
-    font-size: 2.8rem;
+    font-size: 2.94rem;
   }
 }
 
@@ -646,15 +646,13 @@ h1 {
 
 /* Placeholder Sections */
 .sponsors-section,
-.events-section,
-.cta-section {
+.events-section {
   padding: 1.5rem 0 3rem;
   border-top: 1px solid rgba(23, 51, 45, 0.12);
 }
 
 .sponsors-section h2,
-.events-section h2,
-.cta-section h2 {
+.events-section h2 {
   color: var(--foreground);
   font-size: clamp(1.5rem, 3vw, 2.2rem);
   font-weight: 800;
@@ -663,8 +661,7 @@ h1 {
 }
 
 .sponsors-placeholder,
-.events-placeholder,
-.cta-placeholder {
+.events-placeholder {
   background: rgba(23, 51, 45, 0.05);
   border: 2px dashed rgba(23, 51, 45, 0.2);
   border-radius: 0.75rem;
@@ -677,8 +674,7 @@ h1 {
 }
 
 .sponsors-placeholder p,
-.events-placeholder p,
-.cta-placeholder p {
+.events-placeholder p {
   color: var(--muted);
   font-size: 1rem;
   margin: 0;
@@ -693,6 +689,7 @@ h1 {
   .contact-map {
     aspect-ratio: 4 / 3;
   }
+
 }
 
 @media (max-width: 480px) {
