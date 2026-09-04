@@ -329,7 +329,7 @@ h1 {
 }
 
 .carousel-slide {
-  aspect-ratio: 20 / 9;
+  aspect-ratio: 200 / 73.1025;
   flex: 0 0 100%;
   position: relative;
   scroll-snap-align: start;
@@ -648,7 +648,7 @@ h1 {
 .sponsors-section,
 .events-section,
 .cta-section {
-  padding: 3rem 0;
+  padding: 1.5rem 0 3rem;
   border-top: 1px solid rgba(23, 51, 45, 0.12);
 }
 

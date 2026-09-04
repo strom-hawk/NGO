@@ -20,22 +20,22 @@ export default function Home() {
     <main className="home-page">
       <ImageCarousel images={images} />
 
-      {/* Sponsors Section */}
-      <section className="sponsors-section" aria-label="Sponsors">
-        <div className="site-container">
-          <h2>Sponsors</h2>
-          <div className="sponsors-placeholder">
-            <p>Sponsor content coming soon...</p>
-          </div>
-        </div>
-      </section>
-
       {/* Events Section */}
       <section className="events-section" aria-label="Events">
         <div className="site-container">
           <h2>Events</h2>
           <div className="events-placeholder">
             <p>Events content coming soon...</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Sponsors Section */}
+      <section className="sponsors-section" aria-label="Sponsors">
+        <div className="site-container">
+          <h2>Sponsors</h2>
+          <div className="sponsors-placeholder">
+            <p>Sponsor content coming soon...</p>
           </div>
         </div>
       </section>
