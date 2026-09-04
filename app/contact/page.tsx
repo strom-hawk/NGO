@@ -60,6 +60,16 @@ export default function ContactPage() {
           ))}
         </div>
       </section>
+
+      <section className="site-container contact-map-section" aria-labelledby="contact-map-title">
+        <div className="contact-map">
+          <iframe
+            src={contactDetails.map.embedUrl}
+            title="Map showing Rajvika Welfare Foundation's location"
+            loading="lazy"
+          />
+        </div>
+      </section>
     </main>
   );
 }
