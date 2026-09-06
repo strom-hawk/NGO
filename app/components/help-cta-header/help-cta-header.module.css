@@ -1,4 +1,4 @@
-.helpCtaFooter {
+.helpCtaHeader {
   align-items: center;
   background: #fff;
   border: 1px solid rgba(23, 51, 45, 0.12);
@@ -12,13 +12,13 @@
   transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
 }
 
-.helpCtaFooter:hover {
+.helpCtaHeader:hover {
   border-color: #f59e0b;
   box-shadow: 0 0.55rem 1.4rem rgba(23, 51, 45, 0.12);
   transform: translateY(-0.15rem);
 }
 
-.helpCtaFooterIcon {
+.helpCtaHeaderIcon {
   align-items: center;
   background: #f59e0b;
   border-radius: 0.65rem;
@@ -31,18 +31,18 @@
   width: 2.45rem;
 }
 
-.helpCtaFooter:hover .helpCtaFooterIcon {
+.helpCtaHeader:hover .helpCtaHeaderIcon {
   background: #fbbf24;
   transform: rotate(-8deg) scale(1.05);
 }
 
-.helpCtaFooterCopy {
+.helpCtaHeaderCopy {
   display: grid;
   gap: 0.1rem;
   min-width: 0;
 }
 
-.helpCtaFooterLabel {
+.helpCtaHeaderLabel {
   color: var(--muted);
   font-size: 0.62rem;
   font-weight: 800;
@@ -51,7 +51,7 @@
   text-transform: uppercase;
 }
 
-.helpCtaFooterNumber {
+.helpCtaHeaderNumber {
   color: var(--foreground);
   font-size: 0.86rem;
   font-weight: 800;
@@ -61,18 +61,18 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .helpCtaFooter,
-  .helpCtaFooterIcon {
+  .helpCtaHeader,
+  .helpCtaHeaderIcon {
     transition: none;
   }
 }
 
 @media (max-width: 480px) {
-  .helpCtaFooter {
+  .helpCtaHeader {
     min-width: 0;
   }
 
-  .helpCtaFooterNumber {
+  .helpCtaHeaderNumber {
     font-size: 0.8rem;
   }
 }

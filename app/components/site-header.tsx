@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { HelpCtaFooter } from "./help-cta-footer/help-cta-footer";
+import { HelpCtaHeader } from "./help-cta-header/help-cta-header";
 
 const navigation = [
   { href: "/", label: "Home" },
@@ -31,7 +31,7 @@ export function SiteHeader() {
             ))}
           </ul>
         </nav>
-        <HelpCtaFooter />
+        <HelpCtaHeader />
       </div>
     </header>
   );
